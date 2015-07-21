@@ -1,7 +1,7 @@
-if exists('g:loaded_nerdtree_smart_open_file')
+if exists('g:loaded_nerdtree_smart_open')
   finish
 endif
-let g:loaded_nerdtree_smart_open_file = 1
+let g:loaded_nerdtree_smart_open = 1
 
 if !exists('g:nerdtree_smart_open_extensions')
   let g:nerdtree_smart_open_extensions = []
@@ -24,19 +24,21 @@ if exists('g:nerdtree_smart_open_command')
   call insert(s:unix_openers, g:nerdtree_smart_open_command, 0)
 endif
 
-call NERDTreeAddKeyMap({
-       \ 'key': 'o',
-       \ 'override': 1,
-       \ 'callback': 'NERDTreeSmartOpenHandler',
-       \ 'quickhelpText': 'open handler',
-       \ 'scope': 'FileNode' })
+if !exists('g:nerdtree_smart_open_default_mappings') || g:nerdtree_smart_open_default_mappings
+  call NERDTreeAddKeyMap({
+         \ 'key': 'o',
+         \ 'override': 1,
+         \ 'callback': 'NERDTreeSmartOpenHandler',
+         \ 'quickhelpText': 'open handler',
+         \ 'scope': 'FileNode' })
 
-call NERDTreeAddKeyMap({
-       \ 'key': '<C-o>',
-       \ 'override': 1,
-       \ 'callback': 'NERDTreeSmartOpenForcedHandler',
-       \ 'quickhelpText': 'open handler',
-       \ 'scope': 'Node' })
+  call NERDTreeAddKeyMap({
+         \ 'key': '<C-o>',
+         \ 'override': 1,
+         \ 'callback': 'NERDTreeSmartOpenForcedHandler',
+         \ 'quickhelpText': 'open handler',
+         \ 'scope': 'Node' })
+endif
 
 function! NERDTreeSmartOpenHandler(filenode)
   let file_name = a:filenode.path.pathSegments[-1]
