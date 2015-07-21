@@ -17,7 +17,7 @@ let s:default_extensions = [
 call extend(g:nerdtree_smart_open_extensions, s:default_extensions)
 call map(g:nerdtree_smart_open_extensions, 'escape(v:val, ".")')
 
-au VimEnter * call NERDTreeAddKeyMap({
+call NERDTreeAddKeyMap({
        \ 'key': 'o',
        \ 'override': 1,
        \ 'callback': 'NERDTreeSmartOpenHandler',
