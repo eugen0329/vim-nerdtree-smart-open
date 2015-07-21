@@ -1,0 +1,43 @@
+*nerdtree_smart_open.txt*     Nerdtree plugin for opening files/directories using third party applications.
+
+
+USAGE                                   *nerdtree-smart-open*
+
+Use default open command ('o' or '<CR>') mapping to open files under the cursor
+inside of the nerdtree window.  The effect will be only in the case that the 
+file extension will match with on of the extensions, specified in
+g:nerdtree_smart_open_extensions.
+
+Alternatively you can use <C-o> to open a file/directory ignoring both
+default and custom extensions.
+
+
+CUSTOMIZATIION                          *nerdtree-smart-open-customization*
+
+                                        *g:nerdtree_smart_open_extensions*
+Use g:nerdtree_smart_open_extensions to add new extensions to the list of
+standart extensions. Example:
+  let g:nerdtree_smart_open_extensions = ['.foo', '.bar']
+
+                                        *g:nerdtree_smart_open_default_mappings*
+Set varaiable g:nerdtree_smart_open_default_mappings, if you need to use another
+mappings then default. 
+
+    let g:nerdtree_smart_open_default_mappings
+
+Default value is 1.
+
+                      *NERDTreeSmartOpenHandler* *NERDTreeSmartOpenForcedHandler*
+Use 'NERDTreeSmartOpenHandler' and 'NERDTreeSmartOpenForcedHandler' functions
+to define custom NERDTree mappings.
+
+                                        *nerdtree-smart-open-forced*
+Press <C-o> to open current file/directory under the cursor forcefully.
+
+
+ABOUT                                   *nerdtree-smart-open-about*
+
+The latest version is available at:
+https://github.com/eugen0329/vim-nerdtree-smart-open
+
+vim:tw=78:et:ft=help:norl:
