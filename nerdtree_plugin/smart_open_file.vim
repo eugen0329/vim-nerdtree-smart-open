@@ -7,7 +7,11 @@ if !exists('g:nerdtree_smart_open_extensions')
   let g:nerdtree_smart_open_extensions = []
 endif
 let s:unix_openers = ['gnome-open', 'open', 'xdg-open', 'kde-open']
-let s:default_extensions = ['.jpg', '.jpeg', '.png', '.pdf']
+let s:default_extensions = [
+      \ '.jpg', '.gif', '.jpeg', '.png', 
+      \ '.pdf', '.djvu', '.odf', '.doc', '.docx',
+      \ '.mpg', '.mpeg', '.mov', '.flv', '.avi', '.3gp', '.wmv', 
+      \ ]
 
 call extend(g:nerdtree_smart_open_extensions, s:default_extensions)
 call map(g:nerdtree_smart_open_extensions, 'escape(v:val, ".")')
