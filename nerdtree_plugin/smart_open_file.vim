@@ -8,9 +8,10 @@ if !exists('g:nerdtree_smart_open_extensions')
 endif
 let s:unix_openers = ['gnome-open', 'open', 'xdg-open', 'kde-open']
 let s:default_extensions = [
-      \ '.jpg', '.gif', '.jpeg', '.png', 
-      \ '.pdf', '.djvu', '.odf', '.doc', '.docx',
-      \ '.mpg', '.mpeg', '.mov', '.flv', '.avi', '.3gp', '.wmv', 
+      \ '.jpg', '.gif', '.jpeg', '.png',
+      \ '.pdf', '.djvu', '.odf', '.doc', '.docx', '.swf',
+      \ '.otf', '.eot', '.ttf', '.woff',
+      \ '.mpg', '.mpeg', '.mov', '.flv', '.avi', '.3gp', '.wmv',
       \ ]
 
 call extend(g:nerdtree_smart_open_extensions, s:default_extensions)
