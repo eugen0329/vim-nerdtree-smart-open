@@ -7,14 +7,15 @@ g:nerdtree_smart_open_extensions.
 
 Press \<C-o\> to open current file/directory under the cursor forcefully.
 
+# Customization
 
-Use g:nerdtree_smart_open_extensions to add new extensions to the list of
+Use g:nerdtree_smart_open_extensions to add a new extensions to the list of
 standart extensions. Example:
 
         let g:nerdtree_smart_open_extensions = ['.foo', '.bar']
 
 
-Set g:nerdtree_smart_open_command variaable to add custom command for handling 
+Set g:nerdtree_smart_open_command variaable to add a custom command for handling 
 nodes opening. Example:
 
         let g:nerdtree_smart_open_command = 'another_opener'

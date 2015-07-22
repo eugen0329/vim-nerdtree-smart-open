@@ -4,8 +4,8 @@
 USAGE                                   *nerdtree-smart-open*
 
 Use default open mappings ('o' or '<CR>') to open files under the cursor
-inside of the nerdtree window.  The effect will be only in the case that the 
-file extension will match with on of the extensions, specified in
+inside of the nerdtree window.  The effect will be only in the case that
+the file extension will match with on of the extensions, specified in
 g:nerdtree_smart_open_extensions.
 
 Alternatively you can use <C-o> to open a file/directory ignoring both
@@ -15,13 +15,13 @@ default and custom extensions.
 CUSTOMIZATIION                          *nerdtree-smart-open-customization*
 
                                         *g:nerdtree_smart_open_extensions*
-Use g:nerdtree_smart_open_extensions to add new extensions to the list of
-standart extensions. Example:
+Use g:nerdtree_smart_open_extensions to add a new extensions to the list
+of standart extensions. Example:
   let g:nerdtree_smart_open_extensions = ['.foo', '.bar']
 
                                         *g:nerdtree_smart_open_default_mappings*
-Set variaable g:nerdtree_smart_open_default_mappings to 0, if you need to use another
-mappings then default. 
+Set variaable g:nerdtree_smart_open_default_mappings to 0, if you need to
+use another mappings then default.
 
     let g:nerdtree_smart_open_default_mappings
 
@@ -29,14 +29,14 @@ Default value is 1.
 
 
                                         *g:nerdtree_smart_open_command*
-Set g:nerdtree_smart_open_command variaable to add custom command for handling
-nodes opening. Example:
+Set g:nerdtree_smart_open_command variaable to add a custom command for
+handling nodes opening. Example:
     let g:nerdtree_smart_open_command = 'another_opener'
 
 
                       *NERDTreeSmartOpenHandler* *NERDTreeSmartOpenForcedHandler*
 Use 'NERDTreeSmartOpenHandler' and 'NERDTreeSmartOpenForcedHandler' functions
-to define custom NERDTree mappings.
+to define a custom NERDTree mappings.
 
                                         *nerdtree-smart-open-forced*
 Press <C-o> to open current file/directory under the cursor forcefully.
