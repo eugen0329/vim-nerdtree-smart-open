@@ -1,7 +1,7 @@
 # Usage
 
 Use default open mappings ('o' or '\<CR\>') to open files under the cursor
-inside of the nerdtree window.  The effect will be only in the case that the 
+inside of the NERDTree window.  The effect will be only in the case that the 
 file extension will match with on of the extensions, specified in
 g:nerdtree_smart_open_extensions.
 
