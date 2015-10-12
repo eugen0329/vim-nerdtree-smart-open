@@ -14,15 +14,15 @@ call extend(g:nerdtree_smart_open_extensions, [
       \ ])
 call map(g:nerdtree_smart_open_extensions, 'escape(v:val, ".")')
 
-let s:unix_openers =  ['xdg-open', 'gnome-open', 'open', 'kde-open']
+let s:openers =  ['xdg-open', 'gnome-open', 'open', 'kde-open']
 
 if exists('g:nerdtree_smart_open_commands')
   let cmds = copy(g:nerdtree_smart_open_commands)
   if type(cmds) == type([])
-    for c in cmds | call filter(s:unix_openers, 'v:val !=# "'.c.'"') | endfor
-    let s:unix_openers = cmds + s:unix_openers
+    for c in cmds | call filter(s:openers, 'v:val !=# "'.c.'"') | endfor
+    let s:openers = cmds + s:openers
   elseif type(cmds) == type('')
-    call insert(filter(s:unix_openers, 'v:val !=# "'.cmds.'"'), cmds, 0)
+    call insert(filter(s:openers, 'v:val !=# "'.cmds.'"'), cmds, 0)
   else
     echoerr 'Wrong g:nerdtree_smart_open_commands type'
   end
@@ -44,7 +44,7 @@ if get(g:, 'nerdtree_smart_open_default_mappings', 1)
         \ 'scope': 'Node' })
 endif
 
-function! NERDTreeSmartOpenHandler(filenode)
+fu! NERDTreeSmartOpenHandler(filenode)
   let file_name = a:filenode.path.pathSegments[-1]
 
   if file_name =~ '\('.join(g:nerdtree_smart_open_extensions, '\|').'\)$'
@@ -54,16 +54,16 @@ function! NERDTreeSmartOpenHandler(filenode)
   endif
 
   return a:filenode.activate({'reuse': 'all', 'where': 'p'})
-endfunction
+endfu
 
-function! NERDTreeSmartOpenForcedHandler(node)
+fu! NERDTreeSmartOpenForcedHandler(node)
   return s:open(a:node)
-endfunction
+endfu
 
 fu! s:open(filenode)
   let full_path = a:filenode.path.str()
   if has('unix')
-    for opener in s:unix_openers
+    for opener in s:openers
       if executable(opener)
         exe 'silent !'.opener.' '.shellescape(full_path, 1).(has('gui_running') ? ' &' : ' > /dev/null 2>&1')
         redraw!
