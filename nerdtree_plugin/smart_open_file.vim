@@ -28,7 +28,6 @@ if exists('g:nerdtree_smart_open_commands')
   end
 endif
 
-echo s:unix_openers
 if get(g:, 'nerdtree_smart_open_default_mappings', 1)
   call NERDTreeAddKeyMap({
         \ 'key': 'o',
@@ -54,11 +53,11 @@ function! NERDTreeSmartOpenHandler(filenode)
     endif
   endif
 
-  call a:filenode.activate({'reuse': 'all', 'where': 'p'})
+  return a:filenode.activate({'reuse': 'all', 'where': 'p'})
 endfunction
 
 function! NERDTreeSmartOpenForcedHandler(node)
-  call s:open(a:node)
+  return s:open(a:node)
 endfunction
 
 fu! s:open(filenode)
@@ -68,7 +67,7 @@ fu! s:open(filenode)
       if executable(opener)
         exe 'silent !'.opener.' '.shellescape(full_path, 1).(has('gui_running') ? ' &' : ' > /dev/null 2>&1')
         redraw!
-        return 0
+        if !get(v:, 'shell_error', 0) | return 0 | endif
       endif
     endfor
     call nerdtree#echoError("Can't find any opener")
