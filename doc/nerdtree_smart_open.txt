@@ -31,7 +31,9 @@ Default value is 1.
                                         *g:nerdtree_smart_open_command*
 Set g:nerdtree_smart_open_command variaable to add a custom command for
 handling nodes opening. Example:
-    let g:nerdtree_smart_open_command = 'another_opener'
+    let g:nerdtree_smart_open_commands = 'another_opener'
+    " or
+    let g:nerdtree_smart_open_commands = ['foo', 'bar']
 
 
                       *NERDTreeSmartOpenHandler* *NERDTreeSmartOpenForcedHandler*

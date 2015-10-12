@@ -16,28 +16,33 @@ call map(g:nerdtree_smart_open_extensions, 'escape(v:val, ".")')
 
 let s:unix_openers =  ['xdg-open', 'gnome-open', 'open', 'kde-open']
 
-if exists('g:nerdtree_smart_open_command')
-  let opener_index = index(s:unix_openers, g:nerdtree_smart_open_command)
-  if opener_index >= 0
-    call remove(s:unix_openers, opener_index)
-  endif
-  call insert(s:unix_openers, g:nerdtree_smart_open_command, 0)
+if exists('g:nerdtree_smart_open_commands')
+  let cmds = copy(g:nerdtree_smart_open_commands)
+  if type(cmds) == type([])
+    for c in cmds | call filter(s:unix_openers, 'v:val !=# "'.c.'"') | endfor
+    let s:unix_openers = cmds + s:unix_openers
+  elseif type(cmds) == type('')
+    call insert(filter(s:unix_openers, 'v:val !=# "'.cmds.'"'), cmds, 0)
+  else
+    echoerr 'Wrong g:nerdtree_smart_open_commands type'
+  end
 endif
 
-if !exists('g:nerdtree_smart_open_default_mappings') || g:nerdtree_smart_open_default_mappings
+echo s:unix_openers
+if get(g:, 'nerdtree_smart_open_default_mappings', 1)
   call NERDTreeAddKeyMap({
-         \ 'key': 'o',
-         \ 'override': 1,
-         \ 'callback': 'NERDTreeSmartOpenHandler',
-         \ 'quickhelpText': 'open handler',
-         \ 'scope': 'FileNode' })
+        \ 'key': 'o',
+        \ 'override': 1,
+        \ 'callback': 'NERDTreeSmartOpenHandler',
+        \ 'quickhelpText': 'open handler',
+        \ 'scope': 'FileNode' })
 
   call NERDTreeAddKeyMap({
-         \ 'key': '<C-o>',
-         \ 'override': 1,
-         \ 'callback': 'NERDTreeSmartOpenForcedHandler',
-         \ 'quickhelpText': 'open handler',
-         \ 'scope': 'Node' })
+        \ 'key': '<C-o>',
+        \ 'override': 1,
+        \ 'callback': 'NERDTreeSmartOpenForcedHandler',
+        \ 'quickhelpText': 'open handler',
+        \ 'scope': 'Node' })
 endif
 
 function! NERDTreeSmartOpenHandler(filenode)

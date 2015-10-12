@@ -15,8 +15,10 @@ standart extensions. Example:
         let g:nerdtree_smart_open_extensions = ['.foo', '.bar']
 
 
-Set g:nerdtree_smart_open_command variaable to add a custom command for handling 
+Set g:nerdtree_smart_open_commands variable to add a custom command for handling
 nodes opening. Example:
 
-        let g:nerdtree_smart_open_command = 'another_opener'
+        let g:nerdtree_smart_open_commands = 'another_opener'
+        " or
+        let g:nerdtree_smart_open_commands = ['foo', 'bar']
 
