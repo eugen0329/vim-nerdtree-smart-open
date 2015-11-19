@@ -8,7 +8,7 @@ if !exists('g:nerdtree_smart_open_extensions')
 endif
 call extend(g:nerdtree_smart_open_extensions, [
       \ '.jpg', '.gif', '.jpeg', '.png',
-      \ '.pdf', '.djvu', '.odf', '.doc', '.docx', '.swf',
+      \ '.pdf', '.djvu', '.odf', '.doc', '.docx', '.swf', '.odt',
       \ '.otf', '.eot', '.ttf', '.woff',
       \ '.mpg', '.mpeg', '.mov', '.flv', '.avi', '.3gp', '.wmv',
       \ ])
